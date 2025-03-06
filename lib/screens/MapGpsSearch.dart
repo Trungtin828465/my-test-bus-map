@@ -2,17 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:busmap/screens/SelectRoute.dart';
 
-class MapGps extends StatefulWidget {
+class MapGpsSearch extends StatefulWidget {
   @override
   _MapGpsState createState() => _MapGpsState();
 }
 
-class _MapGpsState extends State<MapGps> {
+class _MapGpsState extends State<MapGpsSearch> {
   final MapController _mapController = MapController();
   LatLng _defaultLocation = LatLng(10.8411, 106.8097); // Mặc định: Lê Văn Việt
   LatLng? _currentPosition;
   double _currentZoom = 14.0;
+
+  int _selectedIndex = 0; // Chỉ mục tab được chọn
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    if (index == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => BusSelectRount()),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -141,6 +157,16 @@ class _MapGpsState extends State<MapGps> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.green,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Tra cứu'),
+          BottomNavigationBarItem(icon: Icon(Icons.directions), label: 'Tìm đường'),
+          ],
       ),
     );
   }

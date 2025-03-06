@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Bus Map"),
         backgroundColor: Colors.green,
-        leading: Icon(Icons.directions_bus), // Icon bus
+        leading: Icon(Icons.directions_bus, color: Colors.yellow,), // Icon bus
         elevation: 0, // Bỏ bóng
       ),
       body: Column(
@@ -43,7 +43,9 @@ class _HomePageState extends State<HomePage> {
           ),
 
           // Bản đồ GPS (MapGps)
-          Expanded(
+          SizedBox(
+            width: 400, // Chiều rộng 200px
+            height: 300, // Chiều cao 200px
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -58,6 +60,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+
 
           // Danh sách chức năng
           Padding(
