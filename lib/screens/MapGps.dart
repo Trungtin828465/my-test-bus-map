@@ -68,6 +68,7 @@ class _MapGpsState extends State<MapGps> {
       _mapController.move(_mapController.camera.center, _currentZoom);
     });
   }
+  final String mapTilerApiKey = "zPLirjtSjPncCUfo8P49"; // Thay bằng API Key của bạn
 
   @override
   Widget build(BuildContext context) {
@@ -83,10 +84,17 @@ class _MapGpsState extends State<MapGps> {
             ),
             children: [
               // Layer bản đồ
+              // TileLayer(
+              //   urlTemplate: 'https://tile.thunderforest.com/tra'
+              //       'nsport/{z}/{x}/{y}.png?apikey=30bd60'
+              //       'a20b974c7c8f4f269a3f66f902',
+              // ),
               TileLayer(
-                urlTemplate: 'https://tile.thunderforest.com/tra'
-                    'nsport/{z}/{x}/{y}.png?apikey=30bd60'
-                    'a20b974c7c8f4f269a3f66f902',
+                urlTemplate:
+                "https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=$mapTilerApiKey",
+                additionalOptions: {
+                  'key': mapTilerApiKey,
+                },
               ),
 
               // Marker vị trí hiện tại

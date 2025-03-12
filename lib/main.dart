@@ -5,8 +5,8 @@ import 'package:busmap/theme/theme.dart';
 import 'package:busmap/screens/MapGps.dart';
 import 'package:busmap/screens/SelectRoute.dart';
 import 'package:busmap/screens/MapGpsSearch.dart';
-
 import 'package:busmap/screens/DetailBus.dart';
+import 'package:busmap/mapdung.dart';
 
 void main() {
   runApp(BusMapApp());
@@ -17,7 +17,7 @@ class BusMapApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: mapDung(),
     );
   }
 }
